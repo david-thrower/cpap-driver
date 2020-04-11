@@ -34,7 +34,7 @@ void setup() {
     if (!bmp280.init()) {
         Serial.println("Device not connected or broken!");
     }
-
+  pinMode(9,OUTPUT);
 }
 
 float normal_pressure = 1034.9;
@@ -70,6 +70,7 @@ void loop() {
       }
 
     Serial.print(pump_pwm_level);
+    analogWrite(9,pump_pwm_level);
 
     //get and print altitude data
 //    Serial.print("Altitude: ");
