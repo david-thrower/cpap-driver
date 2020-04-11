@@ -37,8 +37,16 @@ void setup() {
   pinMode(9,OUTPUT);
 }
 
-float normal_pressure = 1034.9;
-int pump_pwm_level = 20;
+float normal_pressure = 1034.9; //  Set this to the current atmospheric pressure in CmH20
+                                // This must be updated as the weather changes !!!!!!!   
+float pressure_setting = 15.0; // Set this variable to how many cmH2O 
+                               // the patient needs. Refer to medical literature or preferably
+                               // a physician's directive for this!!!
+
+int pump_pwm_level = 20;      // This variable will control the PWM for the 12V blower fan
+                              // This will be incremented or decremented by the loop if the 
+                              // trending too high or too low. This should control the pressure 
+                              // to the pressure_setting variable.   
 
 void loop() {
 
@@ -56,10 +64,10 @@ void loop() {
     Serial.print(pressure);
     Serial.println("InH2O");
 
-    if (pressure > normal_pressure + 20) {
+    if (pressure > normal_pressure + pressure_setting) {
       pump_pwm_level -= 10;
       }
-    if (pressure < normal_pressure + 20) {
+    if (pressure < normal_pressure + pressure_setting) {
       pump_pwm_level += 10;
       }
     if (pump_pwm_level < 20) {
@@ -79,5 +87,5 @@ void loop() {
 
     Serial.print("\n");//add a line between output of different times.
 
-    delay(1000);
+    delay(10);
 }
