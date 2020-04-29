@@ -37,9 +37,9 @@ void setup() {
   pinMode(9,OUTPUT);
 }
 
-float normal_pressure = 1034.9; //  Set this to the current atmospheric pressure in CmH20
+float normal_pressure = 1034.25; //  Set this to the current atmospheric pressure in CmH20
                                 // This must be updated as the weather changes !!!!!!!   
-float pressure_setting = 15.0; // Set this variable to how many cmH2O 
+float pressure_setting = 10.0; // Set this variable to how many cmH2O 
                                // the patient needs. Refer to medical literature or preferably
                                // a physician's directive for this!!!
 
